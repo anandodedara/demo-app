@@ -1,0 +1,53 @@
+<%- include("../includes/head.ejs") %>
+    <div class="container">
+        <!-- Content here -->
+        <h4>Products List</h4>
+        <a class="btn btn-success" href="#" role="button" data-bs-toggle="modal" data-bs-target="#addProductModal">Add
+            Product</a>
+        <br>
+        <br>
+        <div>
+            <table class="table tbl table-striped-columns">
+                <thead>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" class="text-end">Action</th>
+                    </tr>
+                <tbody>
+                    <% for(let i=0; i < data.results.length; i++) { const item=data.results[i]; %>
+                        <tr>
+                            <td>
+                                <%= item.serial %>
+                            </td>
+                            <td>
+                                <%= item.name %>
+                            </td>
+                            <td>$<%= item.price %>
+                            </td>
+                            <td class="text-end">
+                                <a class="btn btn-success btn-sm" href="#" role="button" data-bs-toggle="modal"
+                                    data-bs-target="#editProductModal" data-bs-id="<%=item.id%>"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger btn-sm" href="#" role="button" data-bs-toggle="modal"
+                                    data-bs-target="#deleteProductModal" data-bs-id="<%=item.id%>"><i
+                                        class="bi bi-trash3-fill"></i></a>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+
+
+        <%- include("../includes/pagination.ejs") %>
+
+    </div>
+
+    <%- include("./add-product.ejs") %>
+        <%- include("./edit-product.ejs") %>
+            <%- include("./delete-product.ejs") %>
+                <%- include("../includes/end.ejs") %>
+                    <script src="/js/product.js"></script>

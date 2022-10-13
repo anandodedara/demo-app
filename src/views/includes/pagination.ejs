@@ -1,0 +1,56 @@
+<!-- Pagination -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <% if(data.page==1){ %>
+            <li class="page-item disabled">
+                <a class="page-link" href="?page=<%=data.page-1%>" tabindex="-1">Previous</a>
+            </li>
+            <%} else{%>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%=data.page-1%>" tabindex="-1">Previous</a>
+                </li>
+                <%}%>
+                    <% if(data.totalPages<7){ for(let i=1; i<=data.totalPages; i++){%>
+                        <li class="page-item"><a class="page-link <%= data.page===i?'active':'' %>" href="?page=<%=i%>">
+                                <%= i %>
+                            </a></li>
+                        <%} } else{ if(data.totalPages-data.page<=3){%>
+                            <li class="page-item"><a class="page-link disabled" href="#">
+                                    ...
+                                </a></li>
+
+                            <%} let count=0; for(let i=data.page>3?data.page-2:1; i
+                                <=data.totalPages && count<3 && data.totalPages-data.page>=3;
+                                    i++){ count++; %>
+                                    <li class="page-item"><a class="page-link <%= data.page===i?'active':'' %>"
+                                            href="?page=<%=i%>">
+                                            <%= i %>
+                                        </a></li>
+                                    <% } if(data.totalPages-data.page>3){ %>
+                                        <li class="page-item"><a class="page-link disabled" href="#">
+                                                ...
+                                            </a></li>
+                                        <%}%>
+
+                                            <% for(let i=data.totalPages-2; i<=data.totalPages; i++){ %>
+                                                <li class="page-item"><a
+                                                        class="page-link <%= data.page===i?'active':'' %>"
+                                                        href="?page=<%=i%>">
+                                                        <%= i %>
+                                                    </a></li>
+                                                <% }} %>
+
+
+                                                    <% if(data.page==data.totalPages){ %>
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="?page=<%=data.page+1%>">Next</a>
+                                                        </li>
+                                                        <%} else{%>
+                                                            <li class="page-item">
+                                                                <a class="page-link"
+                                                                    href="?page=<%=data.page+1%>">Next</a>
+                                                            </li>
+                                                            <%}%>
+    </ul>
+</nav>
+<!-- Pagination end -->
