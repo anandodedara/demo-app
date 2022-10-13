@@ -16,8 +16,8 @@ Demo project of Product CRUD + Flickr Gallery Demo App
 Install my-project with npm
 
 ```bash
-  npm install my-project
-  cd my-project
+  npm install demo-app
+  cd demo-app
 ```
     
 ## Run Locally
